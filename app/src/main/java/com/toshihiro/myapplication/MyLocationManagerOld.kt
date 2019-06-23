@@ -10,13 +10,14 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 
 class MyLocationManagerOld : LifecycleObserver, LocationListener {
 
-    private var enable: Boolean = false
-    private var lifecycle: Lifecycle? = null
-    private var listener: MylocationListener? = null
-    private var locationManager: LocationManager? = null
+    var enable: Boolean = false
+    var lifecycle: Lifecycle? = null
+    var listener: MylocationListener? = null
+    var locationManager: LocationManager? = null
 
     interface MylocationListener{
         fun onLocationChange(location : Location)
@@ -36,6 +37,7 @@ class MyLocationManagerOld : LifecycleObserver, LocationListener {
 
 
     fun locationEnable(){
+        Log.d("bent","location enable")
         if(!enable){
             enable = true
             start()
@@ -70,20 +72,21 @@ class MyLocationManagerOld : LifecycleObserver, LocationListener {
 
 
     override fun onLocationChanged(location: Location?) {
+        Log.d("Bent location","onChage")
         if (location != null) {
             listener?.onLocationChange(location)
         }
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onProviderEnabled(provider: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onProviderDisabled(provider: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }

@@ -2,46 +2,68 @@ package com.toshihiro.myapplication
 
 import android.Manifest
 import android.content.Intent
+import android.location.Location
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
-import com.karumi.dexter.listener.single.SnackbarOnDeniedPermissionListener
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.URI
+import android.R
+import android.widget.TextView
+import android.annotation.SuppressLint
+
+
 
 class MainActivity : AppCompatActivity() {
 
 
-    private var myLocationManagerOld: MyLocationManagerOld? = null
+    var myLocationManagerOld: MyLocationManagerOld? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.toshihiro.myapplication.R.layout.activity_main)
 
         button1.setOnClickListener {
             Toast.makeText(this,"Helllo" , Toast.LENGTH_LONG).show()
         }
 
         button2.setOnClickListener{
-            Toast.makeText(this,"HellloJAJAJA" , Toast.LENGTH_LONG).show()
+            val intent : Intent = Intent(this,DataActivity::class.java)
+            startActivity(intent)
+//            Toast.makeText(this,"HellloJAJAJA" , Toast.LENGTH_LONG).show()
         }
 
-//        myLocationManagerOld =MyLocationManagerOld(this,this.lifecycle,)
+//        testLocation()
+//        myLocationManagerOld = MyLocationManagerOld(this, lifecycle, getListenerMyLocation())
+        requestSinglePermission()
+//        testLocation()
+
+    }
+
+
+    fun requestSinglePermission(){
+        myLocationManagerOld = MyLocationManagerOld(this, lifecycle, getListenerMyLocation())
 
         Dexter.withActivity(this)
             .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
             .withListener(object : PermissionListener {
                 override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-                    Toast.makeText(applicationContext,"grant : " + response.toString() , Toast.LENGTH_LONG).show()
+                    myLocationManagerOld?.locationEnable()
+                    Log.d("bent", "Permission success")
+
                 }
 
                 override fun onPermissionRationaleShouldBeShown(
@@ -61,6 +83,7 @@ class MainActivity : AppCompatActivity() {
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             var uri: Uri? = Uri.fromParts("package",applicationContext.packageName,null)
                             intent.setData(uri)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
 
                         }else{
@@ -69,17 +92,56 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-            }).check()
+            })
+            .check()
+        //end
+    }
+
+    fun requestMultiplePermission(){
+        Dexter.withActivity(this)
+            .withPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA)
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                    val permissionGrantedResponses = report?.getGrantedPermissionResponses()
+                    val permissionDeniedResponses = report?.getDeniedPermissionResponses()
+
+                    Log.d("bent 1: ", permissionGrantedResponses.toString())
+                    Log.d("bent 2: ", permissionDeniedResponses.toString())
+
+                    if (permissionGrantedResponses != null) {
+                        for (grantedResponse in permissionGrantedResponses) {
+                            grantedResponse.permissionName
+                            Log.d("bent for: ", grantedResponse.permissionName + "")
+                        }
+                    }
+
+                    report?.areAllPermissionsGranted()
+                    Log.d("bent status: ",  report?.areAllPermissionsGranted().toString() + "")
 
 
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: MutableList<PermissionRequest>?,
+                    token: PermissionToken?
+                ) {
+                    token?.continuePermissionRequest()
+
+                }
+
+            })
+            .check()
     }
 
 
-
-    override fun onStart() {
-        super.onStart()
-
+    private fun getListenerMyLocation(): MyLocationManagerOld.MylocationListener {
+        return object : MyLocationManagerOld.MylocationListener {
+            override fun onLocationChange(location: Location) {
+                Log.d("bent location", "" + location.latitude + " / " + location.longitude)
+                var strLocation :String = "latitude : ${location.latitude}\nlongitude : ${location.longitude}"
+                textView.text = strLocation
+            }
+        }
     }
-
 
 }
