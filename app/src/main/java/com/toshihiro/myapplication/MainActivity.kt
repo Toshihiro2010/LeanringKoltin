@@ -23,7 +23,8 @@ import java.net.URI
 import android.R
 import android.widget.TextView
 import android.annotation.SuppressLint
-
+import android.arch.lifecycle.Observer
+import kotlinx.android.synthetic.main.activity_data.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,9 +49,23 @@ class MainActivity : AppCompatActivity() {
 
 //        testLocation()
 //        myLocationManagerOld = MyLocationManagerOld(this, lifecycle, getListenerMyLocation())
-        requestSinglePermission()
+//        requestSinglePermission()
 //        testLocation()
+        testssss()
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+//        testssss()
+    }
+
+    fun testssss(){
+
+        var locationLiveDataListener:MyLocationLiveDataListener = MyLocationLiveDataListener(this)
+        var valuessss = locationLiveDataListener.value
+        Log.d("bent","testss : " + valuessss?.latitude + " / " + valuessss?.longitude)
     }
 
 

@@ -47,25 +47,32 @@ class MyLocationManagerOld : LifecycleObserver, LocationListener {
     @SuppressLint("MissingPermission")
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun start(){
+        Log.d("Bent","On Start")
         if(enable){
-            locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,10f,this, Looper.getMainLooper())
-            locationManager?.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER,
-                1000,
-                10f,
-                this,
-                Looper.getMainLooper()
-            )
+            try {
+                locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,10f,this, Looper.getMainLooper())
+                locationManager?.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1000,
+                        10f,
+                        this,
+                        Looper.getMainLooper()
+                )
+            }catch (e : Exception){
+                Log.d("bent","Exception :" + e.toString())
+            }
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun stop(){
+        Log.d("Bent","On Stop")
         locationManager?.removeUpdates(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun cleanUp(){
+        Log.d("Bent","On Destroy")
         locationManager?.removeUpdates(this)
     }
 
