@@ -51,14 +51,14 @@ class MainActivity : AppCompatActivity() {
 //        myLocationManagerOld = MyLocationManagerOld(this, lifecycle, getListenerMyLocation())
 //        requestSinglePermission()
 //        testLocation()
-        testssss()
+//        testssss()
 
 
     }
 
     override fun onStart() {
         super.onStart()
-//        testssss()
+        testssss()
     }
 
     fun testssss(){
