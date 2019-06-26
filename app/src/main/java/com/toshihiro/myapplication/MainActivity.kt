@@ -64,8 +64,15 @@ class MainActivity : AppCompatActivity() {
     fun testssss(){
 
         var locationLiveDataListener:MyLocationLiveDataListener = MyLocationLiveDataListener(this)
-        var valuessss = locationLiveDataListener.value
-        Log.d("bent","testss : " + valuessss?.latitude + " / " + valuessss?.longitude)
+        locationLiveDataListener.observe(this,object :Observer<Location>{
+            override fun onChanged(t: Location?) {
+                Log.d("bent","testss : " + t?.latitude + " / " + t?.longitude)
+                var strLocation :String = "Bent\nlatitude : ${t?.latitude}\nlongitude : ${t?.longitude}"
+                textView.text = strLocation
+            }
+
+        })
+//        Log.d("bent","testss : " + valuessss?.latitude + " / " + valuessss?.longitude)
     }
 
 
