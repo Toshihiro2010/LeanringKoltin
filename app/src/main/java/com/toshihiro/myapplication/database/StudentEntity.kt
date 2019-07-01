@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey
 data class StudentEntity(
     @PrimaryKey(autoGenerate = true) var id: Int? = null,
     @ColumnInfo(name = "student_code") var code: Long? = null,
-    @ColumnInfo(name = "first_name") var fisrName: String? = null,
+    @ColumnInfo(name = "first_name") var firstName: String? = null,
     @ColumnInfo(name = "last_name") var lastName: String? = null,
     var email: String? = null,
     var gender: String? = null,

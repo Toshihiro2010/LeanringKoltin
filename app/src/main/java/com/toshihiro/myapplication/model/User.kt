@@ -18,7 +18,7 @@ data class User(
         val html_url: String,
         val id: Int,
         val location: String,
-        val login: String,
+        var login: String,
         val name: String,
         val node_id: String,
         val organizations_url: String,
