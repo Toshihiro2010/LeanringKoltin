@@ -12,5 +12,6 @@ data class StudentEntity(
     @ColumnInfo(name = "last_name") var lastName: String? = null,
     var email: String? = null,
     var gender: String? = null,
+    var age: Int? = 0,
     var address: String? = null
 )

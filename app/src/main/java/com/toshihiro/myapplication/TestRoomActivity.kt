@@ -1,5 +1,6 @@
 package com.toshihiro.myapplication
 
+import android.annotation.SuppressLint
 import android.arch.persistence.room.Room
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,56 +18,71 @@ import java.util.*
 
 class TestRoomActivity : AppCompatActivity() {
 
+    var appDatabase: AppDatabase? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test_room)
 
+        appDatabase = AppDatabase.getAppDatabase(this)
 //        myInsert()
-        mySelect()
+//        mySelect()
+//        mySelect2()
+        mySelect3()
     }
 
     fun myInsert(){
-//        var appDatabase = Room.databaseBuilder(this, AppDatabase::class.java, "db_app").build()
-//        Observable.fromCallable { AppDatabase.getAppDatabase(this) }
-//        Observable.fromCallable {Log.d("Bent", "create DB") }
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe{
-//                Log.d("Bent", "create Complete")
-//            }
-
-
-
         val scopeStudent = StudentEntity()
-
         scopeStudent.code = 56122201044
         scopeStudent.email = "s56122201044@ssru.ac.th"
         scopeStudent.firstName = "Patipan"
         scopeStudent.lastName = "Ongarj"
         scopeStudent.address = "203/566 Moo 1,Teparak Road 10540"
 
-        Observable.fromCallable{ AppDatabase.getAppDatabase(this).studentDao().insertStudent(scopeStudent)}
+        Observable.fromCallable{ appDatabase?.studentDao()?.insertStudent(scopeStudent)}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({it -> Log.d("bent","create success")
             },{error -> Log.d("bent", "Unable to update username" + error)})
-
-//        Flowable.fromCallable{appDatabase.studentDao().insertStudent(scopeStudent)}
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe{
-//                Log.d("Bent", "Insert Complete")
-//            }
     }
 
+    @SuppressLint("CheckResult")
     fun mySelect(){
-        Observable.fromCallable{ AppDatabase.getAppDatabase(this).studentDao().getStudentAll()}
+        Observable.fromCallable{ appDatabase!!.studentDao().getStudentAll()}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{
                 it.forEach {
                     Log.d("bent" , " " + it.id + " / " + it.firstName)
                 }
+            }
+
+
+    }
+
+    fun mySelect2(){
+        appDatabase!!.studentDao()
+            .getStudentAllLiveData()
+            .observe(this,android.arch.lifecycle.Observer {
+                Log.d("bent" , "LiveData")
+                it?.forEach {
+                    Log.d("bent" , " " + it.id + " / " + it.firstName)
+                }
+                textView3.text = it!!.get(0).firstName
+        })
+    }
+
+    fun mySelect3(){
+        appDatabase!!.studentDao().getStudentAllRxJava()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                Log.d("bent" , "RxJava")
+                it?.forEach {
+                    Log.d("bentRX" , " " + it.id + " / " + it.firstName)
+                }
+                textView3.text = it!!.get(1).firstName
             }
     }
     fun getNameList(): List<String> {
