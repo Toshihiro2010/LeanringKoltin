@@ -16,12 +16,13 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".TestRecycleActivity"/>
         <activity android:name=".TestRetrofitActivity"/>
         <activity android:name=".TestRoomActivity"/>
         <activity android:name=".ViewTestActivity"/>
         <activity android:name=".DataActivity"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".TestRecycleActivity">
+        <activity android:name=".TestCardViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
