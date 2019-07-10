@@ -4,9 +4,12 @@ import android.content.Context
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_blank.*
+import kotlinx.android.synthetic.main.fragment_blank.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,7 +45,32 @@ class BlankFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false)
+
+        var rootView = inflater.inflate(R.layout.fragment_blank, container, false)
+
+//        btnBlankFragment1.setOnClickListener(object : View.OnClickListener {
+//            override fun onClick(v: View?) {
+//                fragmentManager!!.popBackStack()
+//            }
+//
+//        })
+//        rootView.setOnClickListener {
+//            if(it == btnBlankFragment1){
+//                Log.d("check", "Test")
+//
+//            }
+//        }
+        rootView.btnBlankFragment1.setOnClickListener {
+            Log.d("check", "Test")
+        }
+
+        rootView.btnBlankFragment2.setOnClickListener {
+            Log.d("check", "Test222")
+            fragmentManager!!.popBackStack()
+        }
+
+
+        return rootView
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -43,15 +43,20 @@ class OneFragment : Fragment() {
         Log.i("check",text[0])
 
         var btnTest = rootView.btnFragTest
-        var testView = activity as TestViewPagerActivity
+        try {
+            var testView = activity as TestViewPagerActivity
 
-        btnTest.setOnClickListener {
-            var msg = testView.viewGetTest()
-            Toast.makeText(activity,"heelo : " + msg,Toast.LENGTH_SHORT).show()
-            Log.d("check", "Helo :" + msg)
+            btnTest.setOnClickListener {
+                var msg = testView.viewGetTest()
+                Toast.makeText(activity,"heelo : " + msg,Toast.LENGTH_SHORT).show()
+                Log.d("check", "Helo :" + msg)
 
 
+            }
+        }catch (e : Exception){
+            Log.d("error : " , e.message)
         }
+
 
         return rootView
     }
