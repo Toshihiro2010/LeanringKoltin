@@ -9,8 +9,18 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="Fragment One"/>
+            android:text="Fragment One" android:id="@+id/textFrag1" android:layout_centerInParent="true"/>
+    <TextView
+            android:text="Toshihiro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/txtDataFragment1"
+            android:layout_below="@+id/textFrag1" android:layout_marginTop="-222dp"
+            android:layout_alignRight="@+id/textFrag1" android:layout_marginRight="123dp"
+            android:layout_marginEnd="123dp" android:layout_alignEnd="@+id/textFrag1"/>
+    <Button
+            android:text="request2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/btnFragTest" android:layout_marginTop="182dp"
+            android:layout_below="@+id/textFrag1"/>
 
 </RelativeLayout>

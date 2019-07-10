@@ -37,13 +37,27 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp" android:id="@+id/linearLayout">
-        <Button
-                android:text="Prev"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/btnPrev" android:layout_weight="1"/>
-        <Button
-                android:text="Next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/btnNext" android:layout_weight="1"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="Request"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnViewPagerRequest"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_weight="1">
+            <Button
+                    android:text="Prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnPrev" android:layout_weight="1"/>
+            <Button
+                    android:text="Next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/btnNext" android:layout_weight="1"/>
+        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

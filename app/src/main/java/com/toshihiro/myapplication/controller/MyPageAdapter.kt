@@ -3,6 +3,7 @@ package com.toshihiro.myapplication.controller
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.util.Log
 import com.toshihiro.myapplication.Fragment.*
 
 class MyPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
@@ -11,11 +12,12 @@ class MyPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment? {
         if (position == 0) {
-            return OneFragment()
+            Log.i("Check", "Get Item 0")
+            return OneFragment.newInstance("Android,Development")
         } else if (position == 1) {
-            return TwoFragment()
+            return TwoFragment.newInstance()
         } else if (position == 2) {
-            return ThreeFragment()
+            return ThreeFragment.newInstance()
         }
         return null
     }

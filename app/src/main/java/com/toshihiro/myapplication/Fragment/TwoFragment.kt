@@ -13,6 +13,14 @@ import com.toshihiro.myapplication.R
 
 class TwoFragment : Fragment() {
 
+    companion object{
+        fun newInstance(): TwoFragment {
+            var twoFragment : TwoFragment = TwoFragment()
+            var bundle: Bundle = Bundle()
+            return twoFragment
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
