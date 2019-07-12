@@ -78,5 +78,7 @@ class OneFragment : Fragment() {
         return ""
     }
 
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
 }

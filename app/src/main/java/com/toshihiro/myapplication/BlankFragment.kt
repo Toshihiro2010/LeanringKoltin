@@ -67,6 +67,7 @@ class BlankFragment : Fragment() {
         rootView.btnBlankFragment2.setOnClickListener {
             Log.d("check", "Test222")
             fragmentManager!!.popBackStack()
+//            fragmentManager!!.beginTransaction().remove(this).commit()
         }
 
 
