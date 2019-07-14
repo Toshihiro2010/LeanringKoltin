@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.toshihiro.myapplication.MyListener.MyFragmentListener
 import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.TestViewPagerActivity
 import kotlinx.android.synthetic.main.fragment_one.*
@@ -66,10 +67,6 @@ class OneFragment : Fragment() {
         Log.i("Check", "OnDestroyView");
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-    }
 
     public fun getMyText(): String {
         if(txtDataFragment1 != null){

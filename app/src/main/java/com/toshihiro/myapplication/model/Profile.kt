@@ -11,6 +11,8 @@ data class Profile(var name: String, var job: String, var age: Int) : Parcelable
     ) {
     }
 
+
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(job)
