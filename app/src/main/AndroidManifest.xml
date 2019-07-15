@@ -10,13 +10,14 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
+            android:name=".myKoin.MyAppKoin"
             android:allowBackup="true"
-            android:name=".myDagger.AwesomApplication"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".DaggerTestActivity"/>
         <activity android:name=".TestFragmentActivity"/>
         <activity android:name=".TestViewPagerActivity"/>
         <activity android:name=".TestCardViewActivity"/>
@@ -26,7 +27,7 @@
         <activity android:name=".ViewTestActivity"/>
         <activity android:name=".DataActivity"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".DaggerTestActivity">
+        <activity android:name=".KoinTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
