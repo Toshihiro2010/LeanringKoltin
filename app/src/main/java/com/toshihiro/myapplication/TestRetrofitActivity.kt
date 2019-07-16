@@ -45,6 +45,7 @@ class TestRetrofitActivity : AppCompatActivity() {
 //        testOkHttp()
 
         testokhttpRX()
+//        testRetrofit()
     }
 
 
