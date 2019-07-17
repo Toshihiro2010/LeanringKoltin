@@ -1,16 +1,15 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.myDagger.UserPreference
 import com.toshihiro.myapplication.service.GithubAPI
-import com.toshihiro.myapplication.service.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_koin_test.*
-import kotlinx.android.synthetic.main.activity_test_retrofit.*
 import org.koin.android.ext.android.inject
 import retrofit2.Retrofit
 

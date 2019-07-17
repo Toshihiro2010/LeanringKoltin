@@ -17,17 +17,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".DaggerTestActivity"/>
-        <activity android:name=".TestFragmentActivity"/>
-        <activity android:name=".TestViewPagerActivity"/>
-        <activity android:name=".TestCardViewActivity"/>
-        <activity android:name=".TestRecycleActivity"/>
-        <activity android:name=".TestRetrofitActivity"/>
-        <activity android:name=".TestRoomActivity"/>
-        <activity android:name=".ViewTestActivity"/>
-        <activity android:name=".DataActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".KoinTestActivity">
+        <activity android:name=".activity.DaggerTestActivity"/>
+        <activity android:name=".activity.TestFragmentActivity"/>
+        <activity android:name=".activity.TestViewPagerActivity"/>
+        <activity android:name=".activity.TestCardViewActivity"/>
+        <activity android:name=".activity.TestRecycleActivity"/>
+        <activity android:name=".activity.TestRetrofitActivity"/>
+        <activity android:name=".activity.TestRoomActivity"/>
+        <activity android:name=".activity.ViewTestActivity"/>
+        <activity android:name=".activity.DataActivity"/>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.KoinTestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

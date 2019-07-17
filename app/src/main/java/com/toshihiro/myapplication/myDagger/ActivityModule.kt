@@ -1,6 +1,6 @@
 package com.toshihiro.myapplication.myDagger
 
-import com.toshihiro.myapplication.DaggerTestActivity
+import com.toshihiro.myapplication.activity.DaggerTestActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
 
     @ContributesAndroidInjector()
-    abstract fun contributeMainActivity():DaggerTestActivity
+    abstract fun contributeMainActivity(): DaggerTestActivity
 }

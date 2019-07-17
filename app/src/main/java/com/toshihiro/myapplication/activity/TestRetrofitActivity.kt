@@ -1,4 +1,4 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.toshihiro.myapplication.model.User
 import com.toshihiro.myapplication.service.GithubAPI
 import com.toshihiro.myapplication.service.RetrofitClient
@@ -17,20 +16,9 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_test_retrofit.*
 import okhttp3.*
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 import java.lang.Exception
-import org.reactivestreams.Subscriber
-import android.os.AsyncTask.execute
-import io.reactivex.ObservableEmitter
-import io.reactivex.ObservableOnSubscribe
 import okhttp3.OkHttpClient
-import org.reactivestreams.Subscription
-import android.os.AsyncTask.execute
-
-
-
+import com.toshihiro.myapplication.R
 
 
 class TestRetrofitActivity : AppCompatActivity() {

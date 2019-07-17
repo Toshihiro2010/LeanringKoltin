@@ -1,20 +1,19 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
+import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.controller.MyProductAdapter
 import com.toshihiro.myapplication.model.ProductData
-import com.toshihiro.myapplication.service.GithubAPI
 import com.toshihiro.myapplication.service.ProductAPI
 import com.toshihiro.myapplication.service.RetrofitClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_test_recycle.*
 import retrofit2.Retrofit
-import java.util.*
 
 class TestRecycleActivity : AppCompatActivity() {
 

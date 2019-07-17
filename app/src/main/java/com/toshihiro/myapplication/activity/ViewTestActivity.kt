@@ -1,12 +1,11 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.databinding.ActivityViewTestBinding
 import com.toshihiro.myapplication.model.MyActivityViewModel
 import kotlinx.android.synthetic.main.activity_view_test.*
@@ -21,7 +20,7 @@ class ViewTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_view_test)
 
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_view_test)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_view_test)
 
         ViewModelProviders.of(this)
             .get(MyActivityViewModel::class.java)

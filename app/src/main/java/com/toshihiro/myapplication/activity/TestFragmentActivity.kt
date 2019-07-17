@@ -1,18 +1,18 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
-import android.widget.Toast
-import com.toshihiro.myapplication.Fragment.OneFragment
+import com.toshihiro.myapplication.BlankFragment
 import com.toshihiro.myapplication.Fragment.TwoFragment
 import com.toshihiro.myapplication.MyListener.MyFragmentListener
+import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.model.Profile
 import kotlinx.android.synthetic.main.activity_test_fragment.*
 
-class TestFragmentActivity : AppCompatActivity(), BlankFragment.OnFragmentInteractionListener , MyFragmentListener{
+class TestFragmentActivity : AppCompatActivity(),
+    BlankFragment.OnFragmentInteractionListener, MyFragmentListener{
 
     var strBtnCenter: String? = null
 
@@ -46,7 +46,7 @@ class TestFragmentActivity : AppCompatActivity(), BlankFragment.OnFragmentIntera
 
         btnTestFragment1.setOnClickListener {
 //            var fragment = OneFragment.newInstance("test")
-            var fragment = BlankFragment.newInstance("test","test2")
+            var fragment = BlankFragment.newInstance("test", "test2")
 //        supportFragmentManager.beginTransaction().replace(R.id.frameLayout,fragment).commit()
 //            if(supportFragmentManager)
             supportFragmentManager.beginTransaction()

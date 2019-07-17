@@ -1,16 +1,14 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.annotation.SuppressLint
-import android.arch.persistence.room.Room
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.database.AppDatabase
 import com.toshihiro.myapplication.database.StudentEntity
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_test_room.*
 import java.util.*

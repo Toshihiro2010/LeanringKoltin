@@ -1,4 +1,4 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.Manifest
 import android.arch.lifecycle.Observer
@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.widget.TextView
 import android.widget.Toast
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
@@ -17,6 +16,8 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import com.toshihiro.myapplication.MyLocationLiveDataListener
+import com.toshihiro.myapplication.R
 import kotlinx.android.synthetic.main.activity_data.*
 
 class DataActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class DataActivity : AppCompatActivity() {
 
         buttonBack.setOnClickListener{
 //            finish()
-            val intent : Intent = Intent(this,MainActivity::class.java)
+            val intent : Intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         requestSinglePermission()
@@ -41,7 +42,8 @@ class DataActivity : AppCompatActivity() {
                 .withListener(object : PermissionListener {
                     override fun onPermissionGranted(response: PermissionGrantedResponse?) {
 
-                        var locationLiveDataListener:MyLocationLiveDataListener = MyLocationLiveDataListener(applicationContext)
+                        var locationLiveDataListener: MyLocationLiveDataListener =
+                            MyLocationLiveDataListener(applicationContext)
                         locationLiveDataListener.observe(this@DataActivity,object : Observer<Location> {
                             override fun onChanged(t: Location?) {
                                 Log.d("bent location", "" + t?.latitude + " / " + t?.longitude)

@@ -1,4 +1,4 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.Manifest
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -19,12 +18,9 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
 import kotlinx.android.synthetic.main.activity_main.*
-import java.net.URI
-import android.R
-import android.widget.TextView
-import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
-import kotlinx.android.synthetic.main.activity_data.*
+import com.toshihiro.myapplication.MyLocationLiveDataListener
+import com.toshihiro.myapplication.MyLocationManagerOld
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button2.setOnClickListener{
-            val intent : Intent = Intent(this,DataActivity::class.java)
+            val intent : Intent = Intent(this, DataActivity::class.java)
             startActivity(intent)
 //            Toast.makeText(this,"HellloJAJAJA" , Toast.LENGTH_LONG).show()
         }
@@ -63,7 +59,8 @@ class MainActivity : AppCompatActivity() {
 
     fun testssss(){
 
-        var locationLiveDataListener:MyLocationLiveDataListener = MyLocationLiveDataListener(this)
+        var locationLiveDataListener: MyLocationLiveDataListener =
+            MyLocationLiveDataListener(this)
         locationLiveDataListener.observe(this,object :Observer<Location>{
             override fun onChanged(t: Location?) {
                 Log.d("bent","testss : " + t?.latitude + " / " + t?.longitude)
@@ -77,7 +74,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun requestSinglePermission(){
-        myLocationManagerOld = MyLocationManagerOld(this, lifecycle, getListenerMyLocation())
+        myLocationManagerOld =
+            MyLocationManagerOld(this, lifecycle, getListenerMyLocation())
 
         Dexter.withActivity(this)
             .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)

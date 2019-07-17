@@ -1,7 +1,6 @@
 package com.toshihiro.myapplication.myDagger
 
 import android.app.Application
-import com.toshihiro.myapplication.DaggerTestActivity
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule

@@ -1,8 +1,9 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.controller.MyKateAdapter
 import kotlinx.android.synthetic.main.activity_test_card_view.*
 

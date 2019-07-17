@@ -1,17 +1,14 @@
-package com.toshihiro.myapplication
+package com.toshihiro.myapplication.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import android.util.Log
-import android.view.View
 import com.toshihiro.myapplication.Fragment.OneFragment
 import com.toshihiro.myapplication.controller.MyPageAdapter
 import kotlinx.android.synthetic.main.activity_test_view_pager.*
-import android.R.attr.fragment
-import com.toshihiro.myapplication.Fragment.ThreeFragment
-
+import com.toshihiro.myapplication.R
 
 
 class TestViewPagerActivity : AppCompatActivity() {
