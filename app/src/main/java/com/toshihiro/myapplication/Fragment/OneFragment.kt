@@ -27,11 +27,6 @@ class OneFragment : Fragment() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,8 +42,8 @@ class OneFragment : Fragment() {
 
             btnTest.setOnClickListener {
                 var msg = testView.viewGetTest()
-                Toast.makeText(activity,"heelo : " + msg,Toast.LENGTH_SHORT).show()
-                Log.d("check", "Helo :" + msg)
+                Toast.makeText(activity, "hello : $msg",Toast.LENGTH_SHORT).show()
+                Log.d("check", "Helo :$msg")
 
 
             }
@@ -66,14 +61,11 @@ class OneFragment : Fragment() {
     }
 
 
-    public fun getMyText(): String {
-        if(txtDataFragment1 != null){
+    fun getMyText(): String {
+        if (txtDataFragment1 != null) {
             return txtDataFragment1.text.toString()
         }
         return ""
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 }

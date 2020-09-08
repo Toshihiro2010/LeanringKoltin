@@ -9,7 +9,9 @@ class PreferenceModule {
 
     @Singleton
     @Provides
-    fun provideUserPreference(application: AwesomApplication) = UserPreference(application.applicationContext)
+    fun provideUserPreference(application: AwesomApplication) =
+        UserPreference(application.applicationContext)
+
 
 
 //    @Singleton

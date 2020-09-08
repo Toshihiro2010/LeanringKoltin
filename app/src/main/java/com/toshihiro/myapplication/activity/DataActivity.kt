@@ -27,9 +27,9 @@ class DataActivity : AppCompatActivity() {
         setContentView(R.layout.activity_data)
 
         buttonBack.setOnClickListener{
-//            finish()
-            val intent : Intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            finish()
+//            val intent : Intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
         }
         requestSinglePermission()
     }
@@ -42,8 +42,10 @@ class DataActivity : AppCompatActivity() {
                 .withListener(object : PermissionListener {
                     override fun onPermissionGranted(response: PermissionGrantedResponse?) {
 
-                        var locationLiveDataListener: MyLocationLiveDataListener =
-                            MyLocationLiveDataListener(applicationContext)
+                        val locationLiveDataListener = MyLocationLiveDataListener(applicationContext)
+
+
+
                         locationLiveDataListener.observe(this@DataActivity,object : Observer<Location> {
                             override fun onChanged(t: Location?) {
                                 Log.d("bent location", "" + t?.latitude + " / " + t?.longitude)

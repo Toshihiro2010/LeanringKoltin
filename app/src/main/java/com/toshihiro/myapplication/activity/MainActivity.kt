@@ -59,16 +59,14 @@ class MainActivity : AppCompatActivity() {
 
     fun testssss(){
 
-        var locationLiveDataListener: MyLocationLiveDataListener =
-            MyLocationLiveDataListener(this)
-        locationLiveDataListener.observe(this,object :Observer<Location>{
-            override fun onChanged(t: Location?) {
-                Log.d("bent","testss : " + t?.latitude + " / " + t?.longitude)
-                var strLocation :String = "Bent\nlatitude : ${t?.latitude}\nlongitude : ${t?.longitude}"
-                textView.text = strLocation
-            }
+        var locationLiveDataListener = MyLocationLiveDataListener(this)
 
+        locationLiveDataListener.observe(this, Observer<Location> { t ->
+            Log.d("bent", "testss : " + t?.latitude + " / " + t?.longitude)
+            var strLocation: String = "Bent\nlatitude : ${t?.latitude}\nlongitude : ${t?.longitude}"
+            textView.text = strLocation
         })
+
 //        Log.d("bent","testss : " + valuessss?.latitude + " / " + valuessss?.longitude)
     }
 
@@ -90,19 +88,17 @@ class MainActivity : AppCompatActivity() {
                     permission: PermissionRequest?,
                     token: PermissionToken?
                 ) {
-                    if (token != null) {
-                        token.continuePermissionRequest()
-                    }
+                    token?.continuePermissionRequest()
                 }
 
                 override fun onPermissionDenied(response: PermissionDeniedResponse?) {
                     if (response != null) {
                         if(response.isPermanentlyDenied){
                             val intent : Intent = Intent()
-                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             var uri: Uri? = Uri.fromParts("package",applicationContext.packageName,null)
-                            intent.setData(uri)
+                            intent.data = uri
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
 
@@ -146,6 +142,7 @@ class MainActivity : AppCompatActivity() {
                     token: PermissionToken?
                 ) {
                     token?.continuePermissionRequest()
+                    
 
                 }
 
@@ -158,8 +155,10 @@ class MainActivity : AppCompatActivity() {
         return object : MyLocationManagerOld.MylocationListener {
             override fun onLocationChange(location: Location) {
                 Log.d("bent location", "" + location.latitude + " / " + location.longitude)
-                var strLocation :String = "latitude : ${location.latitude}\nlongitude : ${location.longitude}"
+                var strLocation: String =
+                    "latitude : ${location.latitude}\nlongitude : ${location.longitude}"
                 textView.text = strLocation
+
             }
         }
     }

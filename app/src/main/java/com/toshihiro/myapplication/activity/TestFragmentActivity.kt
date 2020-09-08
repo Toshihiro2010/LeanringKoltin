@@ -1,29 +1,40 @@
 package com.toshihiro.myapplication.activity
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.widget.Toast
 import com.toshihiro.myapplication.BlankFragment
+import com.toshihiro.myapplication.Fragment.OneFragment
 import com.toshihiro.myapplication.Fragment.TwoFragment
 import com.toshihiro.myapplication.MyListener.MyFragmentListener
 import com.toshihiro.myapplication.R
 import com.toshihiro.myapplication.model.Profile
 import kotlinx.android.synthetic.main.activity_test_fragment.*
 
-class TestFragmentActivity : AppCompatActivity(),
-    BlankFragment.OnFragmentInteractionListener, MyFragmentListener{
+class TestFragmentActivity : AppCompatActivity(), BlankFragment.OnFragmentInteractionListener, MyFragmentListener{
 
     var strBtnCenter: String? = null
+
 
     override fun onButtonOkClick(message: String) {
         strBtnCenter = message
         btnCenter.text = strBtnCenter
+        val oneFragment = OneFragment.newInstance("bent")
+        supportFragmentManager.beginTransaction().add(R.id.frameLayout, oneFragment)
+            .addToBackStack(null)
+            .commit()
+
 
     }
 
 
     override fun onButtonCloseClick() {
+        Log.d("Bent => " , "onButtonCloseClick")
+        supportFragmentManager.popBackStack()
 
     }
 
@@ -59,6 +70,11 @@ class TestFragmentActivity : AppCompatActivity(),
             supportFragmentManager.popBackStack()
         }
 
+        btnCenter.setOnClickListener {
+            val count = supportFragmentManager.backStackEntryCount
+            Log.d("bent => " , "count: $count")
+        }
+
     }
 
     override fun onStart() {
@@ -85,4 +101,26 @@ class TestFragmentActivity : AppCompatActivity(),
             btnCenter.text = strBtnCenter
         }
     }
+
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed()
+                return
+            }
+
+            doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+
+            Handler().postDelayed(Runnable {
+                doubleBackToExitPressedOnce = false
+            }, 2000)
+            return
+        }
+        super.onBackPressed()
+
+    }
+
+
 }

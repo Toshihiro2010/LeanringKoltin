@@ -15,6 +15,7 @@ class AwesomApplication : Application(),HasActivityInjector {
 
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector
 
+
     override fun onCreate() {
         super.onCreate()
         AppInjector.init(this)

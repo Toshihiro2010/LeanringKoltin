@@ -49,6 +49,13 @@ class TwoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.btnFragTwoAdd.setOnClickListener{
             listener?.onButtonOkClick("Love Pang")
+            Log.d("bent=>", "Love Pang")
+        }
+
+        view.btnFragTwoDel.setOnClickListener {
+            Log.d("bent=>", "flagMet Del")
+            listener?.onButtonCloseClick()
+
         }
     }
 

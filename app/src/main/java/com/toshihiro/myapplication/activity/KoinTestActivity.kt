@@ -38,13 +38,28 @@ class KoinTestActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    if(it.isSuccessful){
+
+                    if (it.isSuccessful) {
                         var myData = it.body()?.name
-                        Log.d("bent" , "Ok :" + myData)
+                        btnKoinSave.text = myData
+
+                        Log.d("bent", "Ok :" + myData)
                     }
-                },{
-                    Log.d("bent" , "error :" + it.message)
+                }, {
+                    Log.d("bent", "error :" + it.message)
                 })
+
+//            dataAPI.getUser("toshihiro2010")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//                    if(it.isSuccessful){
+//                        var myData = it.body()?.name
+//                        Log.d("bent" , "Ok :" + myData)
+//                    }
+//                },{
+//                    Log.d("bent" , "error :" + it.message)
+//                })
         }
     }
 }
